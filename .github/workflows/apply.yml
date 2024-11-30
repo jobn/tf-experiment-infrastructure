@@ -1,0 +1,33 @@
+name: Apply Infrastructure changes
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: tf-infra-experiment
+  SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SA_KEY }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - id: 'auth'
+        name: Configure GCP credentials
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+          token_format: 'access_token'
+      
+      - name: Apply to Google Cloud
+        run: |
+          terraform init -input=true
+          terraform state list
+          terraform plan
+          terraform apply-auto-approve
