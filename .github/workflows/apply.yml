@@ -10,7 +10,7 @@ env:
   SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SA_KEY }}
 
 jobs:
-  deploy:
+  apply:
     runs-on: ubuntu-latest
     
     steps:
