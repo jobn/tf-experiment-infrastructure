@@ -34,4 +34,4 @@ jobs:
           terraform init -input=true
           terraform state list
           terraform plan
-          terraform apply-auto-approve
+          terraform apply -auto-approve
