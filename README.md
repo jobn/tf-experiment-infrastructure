@@ -6,3 +6,7 @@ This repository contains a Terraform configuration for deploying a simple Cloud 
 
 https://github.com/google-github-actions/auth/tree/v2/?tab=readme-ov-file#direct-wif
 
+### Store Terraform state in gcloud bucket
+
+https://cloud.google.com/docs/terraform/resource-management/store-state
+
