@@ -26,6 +26,7 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: ${{ env.PROJECT_ID }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
           workload_identity_provider: projects/518432764157/locations/global/workloadIdentityPools/github/providers/my-repo
       
       - name: Apply to Google Cloud
