@@ -7,14 +7,13 @@ on:
 
 env:
   PROJECT_ID: tf-infra-experiment
-  SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SA_KEY }}
 
 jobs:
   apply:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       
@@ -22,8 +21,8 @@ jobs:
         name: Configure GCP credentials
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
-          token_format: 'access_token'
+          project_id: ${{ env.PROJECT_ID }}
+          workload_identity_provider: projects/518432764157/locations/global/workloadIdentityPools/github/providers/my-repo
       
       - name: Apply to Google Cloud
         run: |
