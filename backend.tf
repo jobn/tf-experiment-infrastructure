@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    bucket = "338639525a00464a-terraform-remote-backend"
+    bucket = "fd505045dabb7d5c-terraform-remote-backend"
   }
 }
