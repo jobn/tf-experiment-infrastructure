@@ -46,6 +46,14 @@ resource "local_file" "default" {
   EOT
 }
 
+resource "google_artifact_registry_repository" "docker_repo" {
+  provider = google
+  location = "europe-north1"
+  repository_id = "app"
+  format = "DOCKER"
+  description = "Docker repository for storing app container images"
+}
+
 resource "google_cloud_run_service" "app" {
   name     = "app"
   location = var.region
