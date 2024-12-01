@@ -56,7 +56,7 @@ resource "google_cloud_run_service" "app" {
         image = "gcr.io/cloudrun/hello"
         resources {
           limits = {
-            memory = "256Mi"
+            memory = "128Mi"
             cpu    = "1"
           }
         }
