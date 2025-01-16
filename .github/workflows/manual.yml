@@ -1,0 +1,16 @@
+name: Manual trigger example
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to deploy'
+        required: true
+        default: 'production'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Outputting a message
+        run: echo "Hello, ${{ github.event.inputs.service }}!"
